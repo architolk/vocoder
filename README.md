@@ -45,7 +45,7 @@ Different vocoders use different bands, below a comparison:
 - VP330: the original Roland one
 
 | Band | Diy | GRP | Moog | VP330 |
-|------|-----|-----|------|
+|------|-----|-----|------|-------|
 | LP | - | 185 | 50 | - |
 | 1 | 41 | 220 | 159 | - |
 | 2 | 82 | 262 | 200 | 200 |
