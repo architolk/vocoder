@@ -23,7 +23,8 @@ Goal of the project:
 - https://sound-au.com/project63.htm: nice information about calculation values for band pass filter
 - http://musicfromouterspace.com/analogsynth_new/VOCODER2013/VOCODER2013.php: MFOS vocoder
 - https://www.haraldswerk.de/Vocoder/Analyzer/Voc_Analyzer.html#Anker03: NGF Vocoder project
-- http://www.yusynth.net/Modular/EN/BANK/index.html: goede beschrijving hoe de dubbele band pass filter werkt
+- http://www.yusynth.net/Modular/EN/BANK/index.html: goede beschrijving hoe de dubbele band pass filter werkt. Bovendien ook betere high- and low pass filters (ook dubbel uitgevoerd)
+- http://www.yusynth.net/Modular/EN/SAWANIM/index.html: description of a saw animator that can be used in conjunction with the one VCO to create the supersaw effect
 - https://www.muffwiggler.com/forum/viewtopic.php?t=136217: some discussion about the Okita vocoder
 - http://privat.bahnhof.se/wb552721/pdf/okita.pdf: description of the Okita vocoder
 
