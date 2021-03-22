@@ -27,6 +27,8 @@ Goal of the project:
 - http://www.yusynth.net/Modular/EN/SAWANIM/index.html: description of a saw animator that can be used in conjunction with the one VCO to create the supersaw effect
 - https://www.muffwiggler.com/forum/viewtopic.php?t=136217: some discussion about the Okita vocoder
 - http://privat.bahnhof.se/wb552721/pdf/okita.pdf: description of the Okita vocoder
+- https://en.wikipedia.org/wiki/Range_(music): a nice page about the range of human voice and musical instruments
+- https://www.translatorscafe.com/unit-converter/en-US/calculator/note-frequency/: calculates the note vs frequency
 
 ## BOM
 
@@ -38,44 +40,29 @@ Goal of the project:
 
 ## Frequency bands
 
-Different vocoders use different bands, below a comparison:
+Different vocoders use different bands (see [this spreadsheet](bands.xlsx) for some numbers). Bands are stated in frequency, but it would be more logical to arrange bands in notes, as vocoders will devide the frequency domains in a exponentials scale. The GRP, for example devides the range F#3 to A8 into equal notes, spaced 3 semitones apart (using F#, A, C and D#). The Moog devides the range D#3 to D#8 into equal notes, spaces 4 semitones apart (using D#, G and B). Interestingly, the 2504 Hz channel is a bit off: it should be 2540 Hz (!).
 
-- DIY: the diy vocoder as mentioned above in the links
-- GRP: the GRP Vocoder V22
-- Moog: the original Moog 16 channel vocoder
-- VP330: the original Roland one
+So, lets have a frequency range spaced 4 semitones apart (using A, C# and F) and have 16 channels (NB: calculations are made using just intonation! - Maybe better to use equal temperment?)
 
-| Band | Diy | GRP | Moog | VP330 |
-|------|-----|-----|------|-------|
-| LP | - | 185 | 50 | - |
-| 1 | 41 | 220 | 159 | - |
-| 2 | 82 | 262 | 200 | 200 |
-| 3 | 123 | 311 | 252 | 280 |
-| 4 | 164 | 370 | 317 | - |
-| 5 | 246 | 440 | 400 | 400 |
-| 6 | 328 | 523 | 504 | - |
-| 7 | 492 | 622 | 635 | 600 |
-| 8 | 656 | 740 | 800 | - |
-| 9 | - | 880 | - | 900 |
-|10 | 984 | 1047 | 1008 | - |
-|11 | 1312 | 1245 | 1270 | 1300 |
-|12 | - | 1480 | - | - |
-|13 | - | 1760 | 1600 | - |
-|14 | 1968 | 2093 | 2016 | 2000 |
-|15 | 2624 | 2489 | 2504 | - |
-|16 | - | 2960 | - | 2800 |
-|17 | - | 3520 | 3200 | - |
-|18 | 3936 | 4186 | 4032 | 4000 |
-|19 | - | 4978 | - | - |
-|20 | 5248 | 5920 | - | 6000 |
-| HP | - | 7040 | 5080 | - |
-
-Some conclusions
-- First band probably around 150 - 200. The DIY seems to have to much low level bands. Maybe because it doesn't have a low pass filter?
-- All bands between 50 and 7040: seems to be logical, as human hearing is the most sensitive between 2000 - 5000 Hz.
-- A4 = 440, A2 = 110, A6 = 1760. So probably most "carriers" have a root frequency between 110 and 1760, with upper harmonics going all up to the max hearing range.
-- 20 year olds will probably hear 16kHz, 40 year olds only hear till 12kHz and 60 year olds till 8 kHz.
-- The DIY version depends a lot on the values the condensators: we don't have all values available!
+| Band | Note | Frequency just | Frequency equal |
+|------|------|----------------|-----------------|
+| LP | F3+ | 176 | 175 |
+| 1 | A3 | 220 | 220 |
+| 2 | C#4- | 275 | 277 |
+| 4 | F4+ | 352 | 349 |
+| 3 | A4 | 440 | 440 |
+| 5 | C#5- | 550 | 554 |
+| 7 | F5+ | 704 | 698 |
+| 6 | A5 | 880 | 880 |
+| 8 | C#6- | 1100 | 1109 |
+| 9 | F6+ | 1408 | 1397 |
+| 10 | A6 | 1760 | 1760 |
+| 11 | C#7- | 2200 | 2217 |
+| 12 | F7+ | 2816 | 2794 |
+| 13 | A7 | 3520 | 3520 |
+| 14 | C#8- | 4400 | 4435 |
+| 15 | F8+ | 5632 | 5588 |
+| HP | A8 | 7040 | 7040 |
 
 ## Filter topology and calculations
 
