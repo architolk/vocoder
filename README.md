@@ -72,11 +72,13 @@ We need two band pass filters in series to get the required -24db slope, and to 
 
 For the low- and high- pass filters, we also need a two step filter, to get the required -24db. The topologies below are only for one step each!
 
+(to find out: multiple feedback low- & high-pass filters vs Sallen-Key low- & high-pass filters).
+
 ## filters
 
 ### Low pass
 
-A multiple feedback low-pass filter:
+A Sallen-Key low-pass filter:
 
 ![](lowpass.png)
 
@@ -86,13 +88,18 @@ This topology uses a TL071 op amp, with a ±12V power supply and:
 - C1: 560p
 - C2: 68n
 
+![](lowpass-formula.png)
+
+- Q: 5.51
+- Fc: 171.9
+
 Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this low pass filter (see [lowpass.asc](lowpass.asc) for the script):
 
 ![](lowpass-graph.png)
 
 ## High pass
 
-A multiple feedback high-pass filter:
+A Sallen-Key high-pass filter:
 
 ![](highpass.png)
 
@@ -101,6 +108,11 @@ This topology uses a TL071 op amp, with a ±12V power supply and:
 - R2: 150k
 - C1: 1n
 - C2: 1n
+
+![](highpass-formula.png)
+
+- Q: 3.37
+- Fc: 7153.5
 
 Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this high pass filter (see [highpass.asc](highpass.asc) for the script):
 
@@ -118,6 +130,11 @@ This topology uses a TL071 op amp, with a ±12V power supply and:
 - R3: 200k
 - C1: 68n
 - C2: 68n
+
+![](bandpass-formula.png)
+
+- Q: 5.15
+- Fc: 120.5
 
 Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this band pass filter (see [bandpass.asc](bandpass.asc) for the script):
 
