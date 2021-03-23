@@ -66,68 +66,59 @@ So, lets have a frequency range spaced 4 semitones apart (using A, C# and F) and
 
 ## Filter topology and calculations
 
-First try:
-- A multiple feedback band pass filter
-- A multiple feedback low pass filter
-- A multiple feedback high pass filter
+The main inspiration is from the yusynth fixed filter bank, which is actually a good starting point for a vocoder! The vocoder has a bit more band pass filters, so some calculations have to be made differently. For the band pass filters, the Q is only dependent on the values of R, so the easiest way to get the same Q for all band pass filters, is to use the same resistor values and only change the values for C.
 
-(The band pass filters seems to be OK for this, the low and high pass filter are used, just to make it as easy as possible).
-(The original DIY project used two stages, with different frequency peaks: this will probably create a more flat band pass?)
+We need two band pass filters in series to get the required -24db slope, and to get a wider "band": so we have two band pass filters with frequencies that are to the left and the right of the actual required frequency band.
 
-- Q for the band pass would probably need to be between 3 and 4 (depends a bit on the number of channels!)
-- Q for the low & high pass should not be that high, maybe .5 ?
+For the low- and high- pass filters, we also need a two step filter, to get the required -24db. The topologies below are only for one step each!
 
 ## filters
 
 ### Low pass
 
-A [multiple feedback low-pass filter](http://sim.okawa-denshi.jp/en/OPtazyuLowkeisan.htm), using:
-- R1: 200k
-- R2: 220k
-- R3: 510k
-- C1: 10nF
-- C2: 2.2nF
+A multiple feedback low-pass filter:
 
-This will result in f = 101 Hz and Q = 0.55
+![](lowpass.png)
+
+This topology uses a TL071 op amp, with a ±12V power supply and:
+- R1: 150k
+- R2: 150k
+- C1: 560p
+- C2: 68n
+
+Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this band pass filter (see [lowpass.asc](lowpass.asc) for the script):
+
+![](lowpass-graph.png)
 
 ## High pass
 
- A [multiple feedback high-pass filter](http://sim.okawa-denshi.jp/en/OPtazyuHikeisan.htm), using:
- - R1: 4.7k
- - R2: 47k
- - C1: 4.7nF
- - C2: 4.7nF
- - C3: 2.2nF
+A multiple feedback high-pass filter:
 
- This will result in f = 3330 Hz and Q = 0.88
+![](highpass.png)
 
- These values are a bit to low for our taste, to get them to like f = 7000, use:
+This topology uses a TL071 op amp, with a ±12V power supply and:
+- R1: 3300
+- R2: 150k
+- C1: 1n
+- C2: 1n
 
- - R1: 2.2k
- - R2: 22k
- - C1: 4.7nF
- - C2: 4.7nF
- - C3: 2.2nF
+Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this band pass filter (see [highpass.asc](highpass.asc) for the script):
 
- This will result in f = 7114 and Q = 0.88 (same value as above, because C values and quotient of R1 and R2 hasn't changed!)
+![](highpass-graph.png)
 
 ## Band pass
 
-A [multiple feedback band-pass filter](http://sim.okawa-denshi.jp/en/OPtazyuBakeisan.htm), using:
+A multiple feedback band pass filter:
 
-(Actually: two stages are used, with different R values, but the same C values):
+![](bandpass.png)
 
-| Stage | R1 | R2 | R3 |
-|-------|----|----|----|
-| 1 | 33k | 2k | 200k |
-| 2 | 20k | 1.2k | 120k |
+This topology uses a TL071 op amp, with a ±12V power supply and:
+- R1: 33k
+- R2: 2k
+- R3: 200k
+- C1: 68n
+- C2: 68n
 
-Values for C (=C1=C2):
+Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this band pass filter (see [bandpass.asc](bandpass.asc) for the script):
 
-| Band | C | f stage 1 | f stage 2 |
-|------|---|-----------|-----------|
-| 1 | 180n | 46 | 76 |
-| 2 | 100n | 82 | 136 |
-| 3 | 68n | 121 | 200 |
-
-(these values don't add up to the diy page description!!! -> The values match the MFOS filters!)
+![](bandpass-graph.png)
