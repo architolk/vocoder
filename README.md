@@ -86,7 +86,7 @@ This topology uses a TL071 op amp, with a ±12V power supply and:
 - C1: 560p
 - C2: 68n
 
-Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this band pass filter (see [lowpass.asc](lowpass.asc) for the script):
+Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this low pass filter (see [lowpass.asc](lowpass.asc) for the script):
 
 ![](lowpass-graph.png)
 
@@ -102,7 +102,7 @@ This topology uses a TL071 op amp, with a ±12V power supply and:
 - C1: 1n
 - C2: 1n
 
-Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this band pass filter (see [highpass.asc](highpass.asc) for the script):
+Using [ltspice](https://www.analog.com/en/design-center/design-tools-and-calculators/ltspice-simulator.html), we can calculate the frequency response for this high pass filter (see [highpass.asc](highpass.asc) for the script):
 
 ![](highpass-graph.png)
 
