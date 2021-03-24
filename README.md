@@ -135,6 +135,7 @@ This topology uses a TL071 op amp, with a ±12V power supply and:
 - C2: 68n
 
 ![](bandpass-formula.png)
+(NB: the Q-formula is only correct for C1 = C2!)
 
 - Q: 5.15
 - Fc: 120.5
