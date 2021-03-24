@@ -29,6 +29,7 @@ Goal of the project:
 - http://privat.bahnhof.se/wb552721/pdf/okita.pdf: description of the Okita vocoder
 - https://en.wikipedia.org/wiki/Range_(music): a nice page about the range of human voice and musical instruments
 - https://www.translatorscafe.com/unit-converter/en-US/calculator/note-frequency/: calculates the note vs frequency
+- https://www.ti.com/lit/an/sloa049b/sloa049b.pdf: elaborate explanation of active low-pass filter design
 
 ## BOM
 
@@ -89,6 +90,7 @@ This topology uses a TL071 op amp, with a ±12V power supply and:
 - C2: 68n
 
 ![](lowpass-formula.png)
+(NB: the Q-formula is only correct for R1 = R2!)
 
 - Q: 5.51
 - Fc: 171.9
@@ -110,6 +112,7 @@ This topology uses a TL071 op amp, with a ±12V power supply and:
 - C2: 1n
 
 ![](highpass-formula.png)
+(NB: the Q-formula is only correct for C1 = C2!)
 
 - Q: 3.37
 - Fc: 7153.5
