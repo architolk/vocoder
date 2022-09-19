@@ -1,5 +1,7 @@
 # Vocoder
 
+> THIS REPO IS ARCHIVED => Please go to https://docs.architolk.nl/vocoder for up to date information.
+
 ## Goal
 
 Goal of the project:
